@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29/09/2018 01:38:12 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="co.edu.uniminuto.arqSw.proyecto.hibernate.GeneroHasInfoVideo" table="Genero_has_InfoVideo" catalog="videominuto" optimistic-lock="version">
+        <id name="idGeneroHasInfoVideo" type="java.lang.Integer">
+            <column name="IdGenero_has_InfoVideo" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="genero" class="co.edu.uniminuto.arqSw.proyecto.hibernate.Genero" fetch="select">
+            <column name="Genero_idGenero" not-null="true" />
+        </many-to-one>
+        <many-to-one name="infoVideo" class="co.edu.uniminuto.arqSw.proyecto.hibernate.InfoVideo" fetch="select">
+            <column name="InfoVideo_idInfoVideo" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29/09/2018 01:38:12 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="co.edu.uniminuto.arqSw.proyecto.hibernate.Isan" table="Isan" catalog="videominuto" optimistic-lock="version">
+        <id name="idIsan" type="java.lang.Integer">
+            <column name="idIsan" />
+            <generator class="identity" />
+        </id>
+        <property name="isan" type="string">
+            <column name="Isan" length="45" not-null="true" />
+        </property>
+        <set name="videos" table="Video" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Isan_idIsan" not-null="true" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSw.proyecto.hibernate.Video" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29/09/2018 01:38:12 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="co.edu.uniminuto.arqSw.proyecto.hibernate.Subtitulo" table="Subtitulo" catalog="videominuto" optimistic-lock="version">
+        <id name="idSubtitulo" type="java.lang.Integer">
+            <column name="idSubtitulo" />
+            <generator class="identity" />
+        </id>
+        <property name="subtitulo" type="string">
+            <column name="subtitulo" length="45" not-null="true" />
+        </property>
+        <set name="videoHasSubtitulos" table="Video_has_Subtitulo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Subtitulo_idSubtitulo" not-null="true" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSw.proyecto.hibernate.VideoHasSubtitulo" />
+        </set>
+    </class>
+</hibernate-mapping>

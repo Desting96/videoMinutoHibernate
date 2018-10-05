@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29/09/2018 01:38:12 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="co.edu.uniminuto.arqSw.proyecto.hibernate.Carrito" table="Carrito" catalog="videominuto" optimistic-lock="version">
+        <id name="idCarrito" type="java.lang.Integer">
+            <column name="idCarrito" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="usuario" class="co.edu.uniminuto.arqSw.proyecto.hibernate.Usuario" fetch="select">
+            <column name="Usuario_idUsuario" not-null="true" />
+        </many-to-one>
+        <property name="precioTotal" type="string">
+            <column name="precioTotal" length="45" not-null="true" />
+        </property>
+        <property name="fecha" type="string">
+            <column name="fecha" length="45" not-null="true" />
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" length="45" not-null="true" />
+        </property>
+        <set name="carritoHasInfoVideos" table="Carrito_has_InfoVideo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Carrito_idCarrito" not-null="true" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSw.proyecto.hibernate.CarritoHasInfoVideo" />
+        </set>
+    </class>
+</hibernate-mapping>

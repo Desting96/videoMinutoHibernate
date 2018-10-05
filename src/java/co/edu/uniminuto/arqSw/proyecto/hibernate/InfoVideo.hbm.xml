@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 29/09/2018 01:38:12 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="co.edu.uniminuto.arqSw.proyecto.hibernate.InfoVideo" table="InfoVideo" catalog="videominuto" optimistic-lock="version">
+        <id name="idInfoVideo" type="java.lang.Integer">
+            <column name="idInfoVideo" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="clasificacion" class="co.edu.uniminuto.arqSw.proyecto.hibernate.Clasificacion" fetch="select">
+            <column name="Clasificacion_idClasificacion" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tipoVideo" class="co.edu.uniminuto.arqSw.proyecto.hibernate.TipoVideo" fetch="select">
+            <column name="TipoVideo_idTipoVideo" not-null="true" />
+        </many-to-one>
+        <property name="nombreVideo" type="string">
+            <column name=" nombreVideo" length="45" not-null="true" />
+        </property>
+        <property name="imagen" type="string">
+            <column name="imagen" length="45" not-null="true" />
+        </property>
+        <property name="precio" type="string">
+            <column name="precio" length="45" not-null="true" />
+        </property>
+        <property name="personajePrincipal" type="string">
+            <column name="personajePrincipal" length="45" />
+        </property>
+        <set name="calificacions" table="Calificacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="InfoVideo_idInfoVideo" not-null="true" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSw.proyecto.hibernate.Calificacion" />
+        </set>
+        <set name="personas" table="Persona" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="InfoVideo_idInfoVideo" not-null="true" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSw.proyecto.hibernate.Persona" />
+        </set>
+        <set name="carritoHasInfoVideos" table="Carrito_has_InfoVideo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="InfoVideo_idInfoVideo" not-null="true" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSw.proyecto.hibernate.CarritoHasInfoVideo" />
+        </set>
+        <set name="videos" table="Video" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="InfoVideo_idInfoVideo" not-null="true" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSw.proyecto.hibernate.Video" />
+        </set>
+        <set name="generoHasInfoVideos" table="Genero_has_InfoVideo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="InfoVideo_idInfoVideo" not-null="true" />
+            </key>
+            <one-to-many class="co.edu.uniminuto.arqSw.proyecto.hibernate.GeneroHasInfoVideo" />
+        </set>
+    </class>
+</hibernate-mapping>
